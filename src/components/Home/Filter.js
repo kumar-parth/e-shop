@@ -92,8 +92,9 @@ class Filter extends Component {
             scale.push(
                 <div
                     key={i}
+                    style={{ color: '#000' }}
                     className="slot-scale">
-                    {label}
+                    <i className={label !== '' ? 'd-inline fas fa-rupee-sign' : 'd-none'} style={{ fontSize: "11px" }}></i>{label}
                 </div>
             );
 
@@ -105,10 +106,10 @@ class Filter extends Component {
 
             currentScale.push(
                 <div
-
                     key={i}
+                    style={{ color: '#000' }}
                     className="slot-scale">
-                    {currentLabel}
+                    <i className={currentLabel !== '' ? 'd-inline fas fa-rupee-sign' : 'd-none'} style={{ fontSize: "11px" }}></i>{currentLabel}
                 </div>
             );
 
@@ -146,7 +147,7 @@ class Filter extends Component {
 
         return (
             <div>
-                <div className="example-1 text-center">
+                <div className="filter text-center">
                     <div className="slider-container">
 
                         <div className="slider-scale">
