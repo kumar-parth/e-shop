@@ -5,6 +5,7 @@ import prices from './PriceReducer';
 import searchQuery from './SearchReducer';
 import sortCriteria from './SortReducer';
 import cart from './CartReducer';
+import totalCartQuantity from './CartQuantityReducer';
 
 const appReducer = combineReducers({
     drawerMobile,
@@ -12,7 +13,8 @@ const appReducer = combineReducers({
     prices,
     sortCriteria,
     searchQuery,
-    cart
+    cart,
+    totalCartQuantity
 });
 
 export default appReducer;

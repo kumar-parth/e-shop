@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Theme from '../../Theme';
 import { getProducts } from '../../actions/getProducts';
 import { Desktop, Mobile } from '../../utils/MediaQuery';
-import { setCartItem, updateCart } from '../../actions/cart';
+import { setCartItem, updateCart, setTotalCartQuantity } from '../../actions/cart';
 import '../../css/product-list.css';
 
 class ProductList extends Component {
@@ -13,6 +13,9 @@ class ProductList extends Component {
     }
 
     addToCart = (product) => {
+        let totalCartQuantity = this.props.totalCartQuantity;
+        totalCartQuantity += 1;
+        this.props.setTotalCartQuantity(totalCartQuantity);
         let cartItem = this.props.cart.filter((item) => item.id === product.id);
 
         if (cartItem.length === 1) {
@@ -154,7 +157,8 @@ const mapStateToProps = (state) => {
         priceFilterApplyClicked: state.prices.priceFilterApplyClicked,
         sortCriteria: state.sortCriteria,
         searchQuery: state.searchQuery,
-        cart: state.cart
+        cart: state.cart,
+        totalCartQuantity: state.totalCartQuantity
     }
 }
-export default connect(mapStateToProps, { getProducts, setCartItem, updateCart })(ProductList);
+export default connect(mapStateToProps, { getProducts, setCartItem, updateCart, setTotalCartQuantity })(ProductList);

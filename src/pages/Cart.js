@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import BaseLayout from '../layouts/BaseLayout';
 import OrderSummary from '../components/OrderSummary';
 import QuantityCounter from '../components/QuantityCounter';
-import { updateCart } from '../actions/cart';
+import { updateCart, setTotalCartQuantity } from '../actions/cart';
 import { Mobile, Desktop } from '../utils/MediaQuery';
 
 import '../css/cart.css';
@@ -30,6 +30,10 @@ class Cart extends Component {
     }
 
     handleRemoveProduct = (product) => {
+        let productQuantity = product.quantity;
+        let totalCartQuantity = this.props.totalCartQuantity;
+        totalCartQuantity -= productQuantity;
+        this.props.setTotalCartQuantity(totalCartQuantity);
         let cart = this.props.cart;
         let newCart = cart.filter((item) => item.id !== product.id);
         this.props.updateCart(newCart);
@@ -117,8 +121,9 @@ class Cart extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        cart: state.cart
+        cart: state.cart,
+        totalCartQuantity: state.totalCartQuantity
     }
 }
 
-export default connect(mapStateToProps, { updateCart })(Cart);
+export default connect(mapStateToProps, { updateCart, setTotalCartQuantity })(Cart);

@@ -12,3 +12,10 @@ export const updateCart = (cartItems) => {
         payload: cartItems
     };
 };
+
+export const setTotalCartQuantity = (quantity) => {
+    return {
+        type: 'SET_CART_QUANTITY',
+        payload: quantity
+    };
+};

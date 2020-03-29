@@ -13,7 +13,7 @@ class CartWithBadgeIcon extends Component {
                         <span
                             className="badge badge-danger rounded-circle cartIcon__span"
                         >
-                            {this.props.quantity > 0 ? this.props.quantity : null}
+                            {this.props.totalCartQuantity > 0 ? this.props.totalCartQuantity : null}
                         </span>
                     </button>
                 </Link>
@@ -24,7 +24,7 @@ class CartWithBadgeIcon extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        quantity: state.cart.length
+        totalCartQuantity: state.totalCartQuantity
     }
 }
 export default connect(mapStateToProps)(CartWithBadgeIcon);

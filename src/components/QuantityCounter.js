@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateCart } from '../actions/cart';
+import { updateCart, setTotalCartQuantity } from '../actions/cart';
 
 import '../css/cart.css';
 
@@ -18,6 +18,9 @@ const QuantityCounter = (props) => {
         e.preventDefault();
         // console.log(denom, action);
         if (action === 'PLUS') {
+            let totalCartQuantity = props.totalCartQuantity;
+            totalCartQuantity += 1;
+            props.setTotalCartQuantity(totalCartQuantity);
             console.log("PLUS CLICKED == ", props.cart);
             let cart = props.cart;
             cart.forEach((item) => {
@@ -28,6 +31,12 @@ const QuantityCounter = (props) => {
             console.log("NEW CART ==", cart);
             props.updateCart(cart);
         } else if (action === 'MINUS') {
+            let quantity = product.quantity;
+            if (quantity > 1) {
+                let totalCartQuantity = props.totalCartQuantity;
+                totalCartQuantity -= 1;
+                props.setTotalCartQuantity(totalCartQuantity);
+            }
             console.log("MINUS CLICKED == ", product);
             let cart = props.cart;
             cart.forEach((item) => {
@@ -59,8 +68,9 @@ const mapStateToProps = (state, ownProps) => {
     console.log("OWN PROPS== ", ownProps.product);
     return {
         cart: state.cart,
-        product: ownProps.product
+        product: ownProps.product,
+        totalCartQuantity: state.totalCartQuantity
     }
 }
 
-export default connect(mapStateToProps, { updateCart })(QuantityCounter);
+export default connect(mapStateToProps, { updateCart, setTotalCartQuantity })(QuantityCounter);
