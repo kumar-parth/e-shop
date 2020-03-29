@@ -5,6 +5,7 @@ import Theme from '../../Theme';
 import { getProducts } from '../../actions/getProducts';
 import { Desktop, Mobile } from '../../utils/MediaQuery';
 import { setCartItem, updateCart } from '../../actions/cart';
+import '../../css/product-list.css';
 
 class ProductList extends Component {
     componentDidMount() {
@@ -85,12 +86,13 @@ class ProductList extends Component {
         return (
             <React.Fragment>
                 <Mobile>
-                    <div className="product-list">
+                    <React.Fragment>
                         {searchedProducts.length > 0 ?
                             searchedProducts.map((product, index) => {
                                 return (
+
                                     <div key={product.id}
-                                        className={index % 2 === 0 ? 'float-left card p-4 w-50 mt-2 mb-2' : 'float-right card p-4 w-50 mt-2 mb-2'}
+                                        className={index % 2 === 0 ? 'mobile__card float-left card p-4 w-50 mt-2 mb-2' : 'mobile__card float-right card p-4 w-50 mt-2 mb-2'}
                                         style={{ height: 'fit-content', minHeight: '25%', minWidth: '25%' }}
                                     >
                                         <img height="150px" src={`${product.img_url}`} alt="product"></img>
@@ -110,14 +112,14 @@ class ProductList extends Component {
                             })
                             : <Loader />
                         }
-                    </div>
+                    </React.Fragment>
                 </Mobile>
                 <Desktop>
                     <div className="row product-list mb-5">
                         {searchedProducts.length > 0 ?
                             searchedProducts.map((product, index) => {
                                 return (
-                                    <div key={product.id} className="m-2 col-md-2 col-sm-2 col-xs-2 card p-3">
+                                    <div key={product.id} className="desktop__card m-2 col-md-2 col-sm-2 col-xs-2 card p-3">
                                         <img height="200px" src={`${product.img_url}`} alt="product"></img>
                                         <p>{product.name}</p>
                                         <div className="d-inline" style={{ width: 'max-content' }}>

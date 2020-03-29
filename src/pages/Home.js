@@ -19,7 +19,7 @@ class Home extends Component {
     render() {
         return (
             <BaseLayout>
-                <div className="row ml-2 mr-2">
+                <div className="row ml-2 mr-2 pb-5">
                     <Desktop>
                         <div className="col-3" style={{ borderRight: '1px solid rgba(0,0,0,.1)' }}>
                             <h3 className="text-center m-4">Filters</h3>

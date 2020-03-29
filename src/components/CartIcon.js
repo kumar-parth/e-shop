@@ -16,7 +16,7 @@ class CartWithBadgeIcon extends Component {
                                 fontSize: '11px',
                                 position: 'relative',
                                 right: '12px',
-                                top: '5px',
+                                top: '-3px',
                                 verticalAlign: 'top',
                                 paddingTop: '2px'
                             }}
