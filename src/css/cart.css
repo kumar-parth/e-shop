@@ -1,0 +1,22 @@
+.quantityCounter__buttons {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #6c757d;
+    border-radius: 51%;
+    height: 38;
+}
+
+.cart__remove {
+    background: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.cart__remove__mobile {
+    background: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top:10%;
+}

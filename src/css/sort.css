@@ -1,0 +1,9 @@
+.sort__active {
+    text-decoration: underline;
+    color: #2375f3;  
+    cursor: pointer; 
+}
+
+.sort__list:hover {
+    cursor: pointer;
+}

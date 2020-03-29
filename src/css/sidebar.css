@@ -1,0 +1,12 @@
+.sidenav-active {
+    border: 1px solid #ccc;
+    width: 70%;
+    z-index: 10000;
+    transition: width 2s;
+    position: absolute;
+    left: -100px;
+    height: 100%;
+    top:0;
+    background-color: white;
+    box-shadow: 3px 0 8px 1px rgba(0,0,0,.4);
+}
