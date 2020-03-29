@@ -2,73 +2,68 @@
     position: relative;
    }
    
-   .slider-selected-scale {
-   }
-   .slider {
-     position: relative;
-     user-select:none;
-     margin-top: 10px;  
-   }
-   
-   .slider-scale {
-   }
-   
-   .slider-thumb {
-     position: absolute;
-     background-color:#fff;
-     height:20px;
-     width:20px;
-     border-radius:50%;
-     border:1px solid #000;
-     top: -8px;
-     touch-action: none;
-   }
-   
-   .slider-thumb-min {
-     background-color:#fff;
-   }
-   
-   .slider-thumb-max {
-     background-color: #fff;
-   }
-   
-   .slot {
-     text-align: center;
-     display:inline-block;
-     width:20px;
-     height:20px;
-     background-color:none;
-   }
-   
-   .scale-mark {
-    position: absolute;
-    border: 0.5px solid lightgray;;
-    height: 10px;
-   }
-   
-   .slot-scale {
-     text-align: center;
-     display:inline-block;
-     width:20px;
-     height:20px;
-     color: lightgray;
-     user-select: none;
-     
-   }
-   
-   .slot >.slider-thumb {
-     top:3px
-   }
-   
-   .line {
-     position: absolute;
-     background-color: lightgray;
-     height:2px;
-     width: 20px;
-     top: 12px;
-   }
-   
-   .line-selected {
-     height: 4px;
-     background-color: #191919;
-   }
+.slider {
+  position: relative;
+  user-select:none;
+  margin-top: 10px;  
+}
+
+.slider-thumb {
+  position: absolute;
+  background-color:#fff;
+  height:20px;
+  width:20px;
+  border-radius:50%;
+  border:1px solid #000;
+  top: -8px;
+  touch-action: none;
+}
+
+.slider-thumb-min {
+  background-color:#fff;
+}
+
+.slider-thumb-max {
+  background-color: #fff;
+}
+
+.slot {
+  text-align: center;
+  display:inline-block;
+  width:20px;
+  height:20px;
+  background-color:none;
+}
+
+.scale-mark {
+  position: absolute;
+  border: 0.5px solid lightgray;;
+  height: 10px;
+}
+
+.slot-scale {
+  text-align: center;
+  display:inline-block;
+  width:20px;
+  height:20px;
+  color: lightgray;
+  user-select: none;
+  
+}
+
+.slot >.slider-thumb {
+  top:3px
+}
+
+.line {
+  position: absolute;
+  background-color: lightgray;
+  height:2px;
+  width: 20px;
+  top: 12px;
+}
+
+.line-selected {
+  height: 4px;
+  background-color: #191919;
+}
