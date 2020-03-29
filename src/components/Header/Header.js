@@ -7,7 +7,7 @@ import '../../css/header.css';
 class Header extends Component {
     render() {
         return (
-            <div className="row p-2 header">
+            <div className="row p-2 desktop__header">
                 <div className="col-4">
                     <Logo />
                 </div>
