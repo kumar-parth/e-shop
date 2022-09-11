@@ -1,4 +1,4 @@
 export function getProductsUrl() {
-    return "https://api.myjson.com/bins/qzuzi";
+    return "../data/productList.json";
 }
 

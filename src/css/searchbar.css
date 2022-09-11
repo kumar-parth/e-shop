@@ -41,3 +41,27 @@
     color:white;
     text-decoration:none;
 }
+
+
+.list-item {
+    border-bottom: 1px solid #eee !important;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.list-item:hover {
+    background: rgb(247, 173, 34);
+    border-radius: 7px;
+}
+
+.list {
+    position: absolute;
+    top: 65px;
+    border: 1px solid #000;
+    background: white;
+    border-radius: 13px;
+    right: 100px;
+    z-index: 100000;
+    width: 200px;
+}

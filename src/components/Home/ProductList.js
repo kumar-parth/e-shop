@@ -83,9 +83,11 @@ class ProductList extends Component {
     }
 
     render() {
+        console.log(this.props.products);
         let products = this.getProductsByPriceRange();
         let sortedProducts = this.getSortedProducts(products);
         let searchedProducts = this.getSearchProducts(sortedProducts);
+        console.log(products);
         return (
             <React.Fragment>
                 <Mobile>
@@ -98,7 +100,7 @@ class ProductList extends Component {
                                         className={index % 2 === 0 ? 'mobile__card float-left card p-4 w-50 mt-2 mb-2' : 'mobile__card float-right card p-4 w-50 mt-2 mb-2'}
                                         style={{ height: 'fit-content', minHeight: '25%', minWidth: '25%' }}
                                     >
-                                        <img height="150px" src={`${product.img_url}`} alt="product"></img>
+                                        <img height="130px" src={`${product.img_url}`} alt="product"></img>
                                         <p>{product.name}</p>
                                         <div className="d-inline" style={{ width: 'max-content' }}>
                                             <span><i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discount) / 100))}</span>
@@ -123,7 +125,7 @@ class ProductList extends Component {
                             searchedProducts.map((product, index) => {
                                 return (
                                     <div key={product.id} className="desktop__card m-2 col-md-2 col-sm-2 col-xs-2 card p-3">
-                                        <img height="200px" src={`${product.img_url}`} alt="product"></img>
+                                        <img height="150px" src={`${product.img_url}`} alt="product"></img>
                                         <p>{product.name}</p>
                                         <div className="d-inline" style={{ width: 'max-content' }}>
                                             <span><i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discount) / 100))}</span>

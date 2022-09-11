@@ -18,14 +18,37 @@ class SearchBar extends Component {
         this.props.setSearchQuery(this.textInput.current.value);
     }
     render() {
+        console.log(this.textInput.current);
         return (
-            <div className="searchbar">
-                <input className="search_input" ref={this.textInput} type="text" name="" placeholder="Search..."
-                    onChange={this.handleChange} />
-                <a href="#" className="search_icon" onClick={this.handleClick}><i className="fas fa-search"></i></a>
-            </div>
+            <React.Fragment>
+                <div className="searchbar">
+                    <input className="search_input" ref={this.textInput} type="text" name="" placeholder="Search..."
+                        onChange={this.handleChange} />
+                    <a href="#" className="search_icon" onClick={this.handleClick}><i className="fas fa-search"></i></a>
+                    <div className={this.props.searchQuery ? "list" : ""}>
+                        {this.props.searchQuery ?
+                            this.props.suggestions.map((item) => {
+                                return (
+                                    <div className="list-item" key={item.name}>
+                                        {item.name}
+                                    </div>
+                                )
+                            })
+                            : null
+                        }
+                    </div>
+                </div>
+
+            </React.Fragment>
         )
     }
 }
 
-export default connect(null, { setSearchQuery })(SearchBar);
+const mapStateToProps = (state) => {
+    return {
+        suggestions: state.products,
+        searchQuery: state.searchQuery
+    }
+}
+
+export default connect(mapStateToProps, { setSearchQuery })(SearchBar);

@@ -53,7 +53,7 @@ class Cart extends Component {
                                             <div key={product.id + '-Desktop'} className="card mt-5">
                                                 <div className="row col-md-12">
                                                     <div className="col-md-3 p-3">
-                                                        <img height="150px" src={`${product.img_url}`} alt="product"></img>
+                                                        <img height="130px" src={`${product.img_url}`} alt="product"></img>
                                                     </div>
                                                     <div className="col-md-9 pt-3">
                                                         <p>{product.name}</p>
@@ -81,7 +81,7 @@ class Cart extends Component {
                                             <div key={product.id + '-Mobile'} className="card mt-5">
                                                 <div className="row col-md-12 pr-0">
                                                     <div className="col-md-4 p-3 w-50">
-                                                        <img height="150px" src={`${product.img_url}`} alt="product"></img>
+                                                        <img height="80px" src={`${product.img_url}`} alt="product"></img>
                                                     </div>
                                                     <div className="col-md-8 pt-3 w-50 m-0 pl-0 pr-0">
                                                         <p>{product.name}</p>
