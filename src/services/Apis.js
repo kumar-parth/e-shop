@@ -1,4 +1,3 @@
 export function getProductsUrl() {
-    return "../data/productList.json";
+  return "../data/productList.json";
 }
-
