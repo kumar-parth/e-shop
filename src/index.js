@@ -10,7 +10,7 @@ import Cart from "./pages/Cart";
 const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router basename="eshop">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/cart" component={Cart} />
