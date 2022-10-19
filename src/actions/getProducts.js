@@ -1,5 +1,3 @@
-import * as Apis from "../services/Apis";
-
 export const getProducts = () => {
   return (dispatch) => {
     return fetch("/data/productList.json")
