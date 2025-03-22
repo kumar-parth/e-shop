@@ -12,7 +12,7 @@ class CartWithBadgeIcon extends Component {
             <img
               alt="cart_icon"
               height={this.props.height ? this.props.height : 20}
-              src="/cart-img.png"
+              src="/cart-image.png"
               className="px-2"
             />
             <span className="badge badge-danger rounded-circle cartIcon__span">
