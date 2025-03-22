@@ -33,7 +33,7 @@ const SortModal = (props) => {
                             </div>
                             <div className="radio">
                                 <label><input type="radio" name="sortOption"
-                                    checked={props.sortCriteria === 'discount'} onChange={() => handleChange('discount')} /> Discount</label>
+                                    checked={props.sortCriteria === 'discountPercentage'} onChange={() => handleChange('discountPercentage')} /> discountPercentage</label>
                             </div>
                         </form>
                     </div>

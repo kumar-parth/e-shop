@@ -33,16 +33,15 @@ class ProductList extends Component {
         let products = [];
         if (this.props.priceFilterApplyClicked) {
             products = this.props.products.filter((item) => {
-                let price = parseFloat(item.price) - (parseFloat(item.price) * (parseFloat(item.discount) / 100));
+                let price = parseFloat(item.price) - (parseFloat(item.price) * (parseFloat(item.discountPercentage) / 100));
                 return price >= this.props.minPrice && price <= this.props.maxPrice
             });
         }
         else {
-            products = this.props.products.filter((item) => {
-                let price = parseFloat(item.price) - (parseFloat(item.price) * (parseFloat(item.discount) / 100));
-                return price >= this.props.prevMinPrice && price <= this.props.prevMaxPrice
-            });
+            products = this.props.products;
         }
+        console.log('price range filter clicked', this.props.priceFilterApplyClicked);
+        console.log('prod from price range', products);
         return products;
     }
 
@@ -50,23 +49,26 @@ class ProductList extends Component {
         let sortedProducts = [];
         if (this.props.sortCriteria === 'l_to_h') {
             sortedProducts = products.sort((a, b) => {
-                let aPrice = parseFloat(a.price) - (parseFloat(a.price) * (parseFloat(a.discount) / 100));
-                let bPrice = parseFloat(b.price) - (parseFloat(b.price) * (parseFloat(b.discount) / 100));
+                let aPrice = parseFloat(a.price) - (parseFloat(a.price) * (parseFloat(a.discountPercentage) / 100));
+                console.log(`a ${a}`, a.price);
+                let bPrice = parseFloat(b.price) - (parseFloat(b.price) * (parseFloat(b.discountPercentage) / 100));
+                console.log(`b ${b}`, b.price);
                 return aPrice - bPrice;
             });
         }
         else if (this.props.sortCriteria === 'h_to_l') {
             sortedProducts = products.sort((a, b) => {
-                let aPrice = parseFloat(a.price) - (parseFloat(a.price) * (parseFloat(a.discount) / 100));
-                let bPrice = parseFloat(b.price) - (parseFloat(b.price) * (parseFloat(b.discount) / 100));
+                let aPrice = parseFloat(a.price) - (parseFloat(a.price) * (parseFloat(a.discountPercentage) / 100));
+                let bPrice = parseFloat(b.price) - (parseFloat(b.price) * (parseFloat(b.discountPercentage) / 100));
                 return bPrice - aPrice;
             });
         }
         else if (this.props.sortCriteria === 'discount') {
             sortedProducts = products.sort((a, b) => {
-                return b.discount - a.discount;
+                return b.discountPercentage - a.discountPercentage;
             });
         }
+        console.log('sorted porudcts', sortedProducts);
         return sortedProducts;
     }
 
@@ -74,7 +76,7 @@ class ProductList extends Component {
         let searchedProducts = sortedProducts;
         if (this.props.searchQuery !== '') {
             console.log("Search Query ::: ", this.props.searchQuery);
-            searchedProducts = sortedProducts.filter((product) => product.name.toLowerCase().includes(this.props.searchQuery.toLowerCase()));
+            searchedProducts = sortedProducts.filter((product) => product.title.toLowerCase().includes(this.props.searchQuery.toLowerCase()));
         }
         if (searchedProducts.length === 0) {
             return sortedProducts;
@@ -100,16 +102,16 @@ class ProductList extends Component {
                                         className={index % 2 === 0 ? 'mobile__card float-left card p-4 w-50 mt-2 mb-2' : 'mobile__card float-right card p-4 w-50 mt-2 mb-2'}
                                         style={{ height: 'fit-content', minHeight: '25%', minWidth: '25%' }}
                                     >
-                                        <img height="130px" src={`${product.img_url}`} alt="product"></img>
-                                        <p>{product.name}</p>
+                                        <img height="130px" src={`${product.thumbnail}`} alt="product"></img>
+                                        <p>{product.title}</p>
                                         <div className="d-inline" style={{ width: 'max-content' }}>
-                                            <span><i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discount) / 100))}</span>
+                                            <span><i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discountPercentage) / 100))}</span>
                                             <p style={{ display: "inline", marginLeft: '10px', textDecoration: "line-through" }}>
                                                 <i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>
                                                 {parseFloat(product.price)}
                                             </p>
-                                            <span style={{ marginLeft: '10px' }}>{product.discount + '%Off'}</span>
                                         </div>
+                                        <p>{product.discountPercentage + '%Off'}</p>
                                         <button style={Theme.secondaryBtn} onClick={() => this.addToCart(product)}>Add to Cart</button>
                                     </div>
                                 )
@@ -125,16 +127,16 @@ class ProductList extends Component {
                             searchedProducts.map((product, index) => {
                                 return (
                                     <div key={product.id} className="desktop__card m-2 col-md-2 col-sm-2 col-xs-2 card p-3">
-                                        <img height="150px" src={`${product.img_url}`} alt="product"></img>
-                                        <p>{product.name}</p>
+                                        <img height="150px" src={`${product.thumbnail}`} alt="product"></img>
+                                        <p>{product.title}</p>
                                         <div className="d-inline" style={{ width: 'max-content' }}>
-                                            <span><i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discount) / 100))}</span>
+                                            <span><i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discountPercentage) / 100))}</span>
                                             <p style={{ display: "inline", marginLeft: '10px', textDecoration: "line-through" }}>
                                                 <i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>
                                                 {parseFloat(product.price)}
                                             </p>
-                                            <span style={{ marginLeft: '10px' }}>{product.discount + '%Off'}</span>
                                         </div>
+                                        <p>{product.discountPercentage + '%Off'}</p>
                                         <button style={Theme.secondaryBtn} onClick={() => this.addToCart(product)}>Add to Cart</button>
                                     </div>
                                 )

@@ -15,9 +15,9 @@ const OrderSummary = (props) => {
                     </div>
                 </div>
                 <div className="card-text d-flex justify-content-between mb-3">
-                    <div className="h6 font-weight-normal">Discount</div>
+                    <div className="h6 font-weight-normal">discountPercentage</div>
                     <div className="h6 font-weight-normal">
-                        <i className="fas fa-rupee-sign" style={{ fontSize: '14px' }}></i>{props.orderSummary.discount.toFixed(2)}
+                        <i className="fas fa-rupee-sign" style={{ fontSize: '14px' }}></i>{props.orderSummary.discountPercentage.toFixed(2)}
                     </div>
                 </div>
                 <div className="card-text d-flex justify-content-between mb-3">

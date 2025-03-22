@@ -14,19 +14,19 @@ class Cart extends Component {
     getOrderSummary = (cart) => {
         let totalPrice = 0;
         let allItemsPrice = 0;
-        let discount = 0;
+        let discountPercentage = 0;
         let quantity = 0;
         cart.forEach((item) => {
             let itemPrice = parseFloat(item.price).toFixed(2) * parseFloat(item.quantity);
-            let itemDiscount = parseFloat(itemPrice).toFixed(2) * parseFloat(parseFloat(item.discount) / 100);
-            console.log("ITEM DISCOUNT === ", parseFloat(itemPrice));
+            let itemdiscountPercentage = parseFloat(itemPrice).toFixed(2) * parseFloat(parseFloat(item.discountPercentage) / 100);
+            console.log("ITEM discountPercentage === ", parseFloat(itemPrice));
             allItemsPrice += itemPrice;
             quantity += 1;
-            discount += itemDiscount;
+            discountPercentage += itemdiscountPercentage;
         });
-        totalPrice += allItemsPrice - discount;
-        console.log(totalPrice, '---', discount, '---', quantity, '---', allItemsPrice);
-        return { totalPrice, discount, quantity, allItemsPrice };
+        totalPrice += allItemsPrice - discountPercentage;
+        console.log(totalPrice, '---', discountPercentage, '---', quantity, '---', allItemsPrice);
+        return { totalPrice, discountPercentage, quantity, allItemsPrice };
     }
 
     handleRemoveProduct = (product) => {
@@ -53,18 +53,18 @@ class Cart extends Component {
                                             <div key={product.id + '-Desktop'} className="card mt-5">
                                                 <div className="row col-md-12">
                                                     <div className="col-md-3 p-3">
-                                                        <img height="130px" src={`${product.img_url}`} alt="product"></img>
+                                                        <img height="130px" src={`${product.thumbnail}`} alt="product"></img>
                                                     </div>
                                                     <div className="col-md-9 pt-3">
-                                                        <p>{product.name}</p>
+                                                        <p>{product.title}</p>
                                                         <div className="row col-md-12">
                                                             <div className="col-md-5 pl-0">
-                                                                <span><i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discount) / 100))}</span>
+                                                                <span><i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discountPercentage) / 100))}</span>
                                                                 <p style={{ display: "inline", marginLeft: '10px', textDecoration: "line-through" }}>
                                                                     <i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>
                                                                     {parseFloat(product.price)}
                                                                 </p>
-                                                                <span style={{ marginLeft: '10px' }}>{product.discount + '%Off'}</span>
+                                                                <span style={{ marginLeft: '10px' }}>{product.discountPercentage + '%Off'}</span>
                                                             </div>
                                                             <div className="col-md-5">
                                                                 <QuantityCounter product={product} />
@@ -81,18 +81,18 @@ class Cart extends Component {
                                             <div key={product.id + '-Mobile'} className="card mt-5">
                                                 <div className="row col-md-12 pr-0">
                                                     <div className="col-md-4 p-3 w-50">
-                                                        <img height="80px" src={`${product.img_url}`} alt="product"></img>
+                                                        <img height="80px" src={`${product.thumbnail}`} alt="product"></img>
                                                     </div>
                                                     <div className="col-md-8 pt-3 w-50 m-0 pl-0 pr-0">
-                                                        <p>{product.name}</p>
+                                                        <p>{product.title}</p>
                                                         <div>
                                                             <div className="col-12 d-flex flex-row p-0 float-left">
-                                                                <span><i className="fas fa-rupee-sign" style={{ fontSize: "11px" }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discount) / 100))}</span>
+                                                                <span><i className="fas fa-rupee-sign" style={{ fontSize: "11px" }}></i>{parseFloat(product.price) - (parseFloat(product.price) * (parseFloat(product.discountPercentage) / 100))}</span>
                                                                 <p style={{ display: "inline", marginLeft: '10px', textDecoration: "line-through" }}>
                                                                     <i className="fas fa-rupee-sign" style={{ fontSize: '11px' }}></i>
                                                                     {parseFloat(product.price)}
                                                                 </p>
-                                                                <span style={{ marginLeft: '10px' }}>{product.discount + '%Off'}</span>
+                                                                <span style={{ marginLeft: '10px' }}>{product.discountPercentage + '%Off'}</span>
                                                             </div>
                                                             <div className="col-12 w-100 d-flex float-right p-0" style={{ zIndex: '1000' }}>
                                                                 <QuantityCounter product={product} />
